@@ -2,14 +2,14 @@ import React, { Fragment } from 'react';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Body from './Body';
+import SearchContainer from './SearchContainer';
 
 function App() {
 	return (
 		<Fragment>
 			<CssBaseline />
 			<Container maxWidth="md">
-				<Body />
+				<SearchContainer />
 			</Container>
 		</Fragment>
 	);
