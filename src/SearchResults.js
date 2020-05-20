@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const SearchResults = () => {
-	return <h3>Search Results</h3>;
+	return <h1>Search Results</h1>;
 };
 
 export default SearchResults;

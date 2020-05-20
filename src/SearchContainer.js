@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useRef } from 'react';
 import Search from './Search';
 import SearchResults from './SearchResults';
 
@@ -7,12 +7,14 @@ const endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1';
 const SearchContainer = () => {
 	const [query, setQuery] = useState('');
 	const [games, setGames] = useState([]);
+	const searchForm = useRef();
 
 	const handleChange = (event) => {
 		setQuery(event.target.value);
 	};
 
 	const handleSubmit = (event) => {
+		searchForm.current.reportValidity();
 		event.preventDefault();
 
 		const apiCall = `${endpoint}?
@@ -36,20 +38,21 @@ const SearchContainer = () => {
 	};
 
 	const getGames = async (apiCall) => {
-		let response = await fetch(apiCall);
-		let videogames = await response.json();
-
-		let filteredGames = videogames.findItemsAdvancedResponse[0].searchResult[0].item.filter(
-			(item) => {
+		try {
+			let response = await fetch(apiCall);
+			let videogames = await response.json();
+			let filteredGames = videogames.findItemsAdvancedResponse[0].searchResult[0].item.filter((item) => {
 				return item.country[0] === 'US';
-			}
-		);
-		return filteredGames;
+			});
+			return filteredGames;
+		} catch (error) {
+			console.err(error);
+		}
 	};
 
 	return (
 		<Fragment>
-			<Search handleChange={handleChange} handleSubmit={handleSubmit} />
+			<Search handleChange={handleChange} handleSubmit={handleSubmit} searchForm={searchForm} />
 			<SearchResults />
 		</Fragment>
 	);

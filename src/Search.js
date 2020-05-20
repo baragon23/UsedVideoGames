@@ -1,35 +1,89 @@
 import React, { useState } from 'react';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
 	textField: {
-		width: '50%',
-		border: '2px solid red',
-		background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+		width: '100%',
+		backgroundColor: 'aliceblue',
 	},
 	form: {
 		width: '100%',
 	},
+	dropdown: {
+		minWidth: 120,
+		backgroundColor: 'aliceblue',
+	},
+	button: {
+		height: '100%',
+	},
 });
 
-const Search = ({ handleChange, handleSubmit }) => {
+const Search = ({ handleChange, handleSubmit, searchForm }) => {
+	const [system, setSystem] = useState('');
+
 	const classes = useStyles();
 
+	const handleSystemChange = (event) => {
+		setSystem(event.target.value);
+	};
+
 	return (
-		<Grid container direction="column" justify="center" alignItems="center">
-			<Typography variant="h2">Search For Used Video Games</Typography>
-			<form className={classes.form} onSubmit={handleSubmit}>
-				<TextField
-					onChange={handleChange}
-					className={classes.textField}
-					label="Type your video game title here..."
-				/>
-				<button onClick={handleSubmit}>Go</button>
+		<div>
+			<Typography variant="h2">Search Used Video Games on eBay</Typography>
+			<form className={classes.form} onSubmit={handleSubmit} ref={searchForm}>
+				<Grid container spacing={1}>
+					<Grid item sm={9}>
+						<TextField
+							id="outlined-basic"
+							onChange={handleChange}
+							className={classes.textField}
+							label="Type your video game title here..."
+							variant="outlined"
+							required
+							inputRef={(input) => input && input.focus()}
+						/>
+					</Grid>
+					<Grid item sm={2}>
+						<FormControl variant="outlined" className={classes.dropdown}>
+							<InputLabel htmlFor="system-dropdown">System</InputLabel>
+							<Select
+								native
+								value={system}
+								onChange={handleSystemChange}
+								label="System"
+								inputProps={{
+									name: 'system',
+									id: 'system-dropdown',
+								}}
+							>
+								<option aria-label="None" value="" />
+								<option value="PS4">PS4</option>
+								<option value="Switch">Switch</option>
+								<option value="Xbox One">Xbox One</option>
+							</Select>
+						</FormControl>
+					</Grid>
+					<Grid item sm={1}>
+						<Button
+							type="submit"
+							variant="contained"
+							size="large"
+							color="primary"
+							className={classes.button}
+						>
+							Go
+						</Button>
+					</Grid>
+				</Grid>
 			</form>
-		</Grid>
+		</div>
 	);
 };
 
