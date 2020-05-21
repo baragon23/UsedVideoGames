@@ -25,14 +25,8 @@ const useStyles = makeStyles({
 	},
 });
 
-const Search = ({ handleChange, handleSubmit, searchForm }) => {
-	const [system, setSystem] = useState('');
-
+const Search = ({ handleChange, handleSubmit, searchForm, gameSystem, handleSystemSelect }) => {
 	const classes = useStyles();
-
-	const handleSystemChange = (event) => {
-		setSystem(event.target.value);
-	};
 
 	return (
 		<div>
@@ -44,7 +38,7 @@ const Search = ({ handleChange, handleSubmit, searchForm }) => {
 							id="outlined-basic"
 							onChange={handleChange}
 							className={classes.textField}
-							label="Type your video game title here..."
+							label="Search for video game"
 							variant="outlined"
 							required
 							inputRef={(input) => input && input.focus()}
@@ -55,8 +49,9 @@ const Search = ({ handleChange, handleSubmit, searchForm }) => {
 							<InputLabel htmlFor="system-dropdown">System</InputLabel>
 							<Select
 								native
-								value={system}
-								onChange={handleSystemChange}
+								required
+								value={gameSystem}
+								onChange={handleSystemSelect}
 								label="System"
 								inputProps={{
 									name: 'system',
