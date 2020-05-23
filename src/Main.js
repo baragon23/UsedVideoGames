@@ -1,6 +1,8 @@
 import React, { useState, Fragment, useRef } from 'react';
-import Search from './Search';
+import Browse from './Browse';
+import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
+import Typography from '@material-ui/core/Typography';
 
 const endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1';
 
@@ -23,7 +25,7 @@ const SearchContainer = () => {
 		event.preventDefault();
 
 		// reset results upon a new user query
-		setGames([]);
+		//setGames([]);
 
 		const searchQuery = `${gameSystem} ${query}`;
 
@@ -66,14 +68,15 @@ const SearchContainer = () => {
 
 	return (
 		<Fragment>
-			<Search
+			<Typography variant="h3">Search For Used Video Games on eBay</Typography>
+			<SearchBar
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
 				searchForm={searchForm}
 				gameSystem={gameSystem}
 				handleSystemSelect={handleSystemSelect}
 			/>
-			<SearchResults games={games} />
+			{games.length > 0 ? <SearchResults games={games} /> : <Browse />}
 		</Fragment>
 	);
 };

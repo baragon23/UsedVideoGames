@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,7 +6,6 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
 	textField: {
@@ -22,15 +21,15 @@ const useStyles = makeStyles({
 	},
 	button: {
 		height: '100%',
+		width: '100%',
 	},
 });
 
-const Search = ({ handleChange, handleSubmit, searchForm, gameSystem, handleSystemSelect }) => {
+const SearchBar = ({ handleChange, handleSubmit, searchForm, gameSystem, handleSystemSelect }) => {
 	const classes = useStyles();
 
 	return (
 		<div>
-			<Typography variant="h2">Search Used Video Games on eBay</Typography>
 			<form className={classes.form} onSubmit={handleSubmit} ref={searchForm}>
 				<Grid container spacing={1}>
 					<Grid item sm={9}>
@@ -82,4 +81,4 @@ const Search = ({ handleChange, handleSubmit, searchForm, gameSystem, handleSyst
 	);
 };
 
-export default Search;
+export default SearchBar;

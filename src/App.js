@@ -1,16 +1,14 @@
 import React, { Fragment } from 'react';
-import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
-import SearchContainer from './SearchContainer';
+import Navigation from './Navigation';
+import PageLayout from './PageLayout';
 
 function App() {
 	return (
 		<Fragment>
 			<CssBaseline />
-			<Container maxWidth="md">
-				<SearchContainer />
-			</Container>
+			<Navigation />
+			<PageLayout />
 		</Fragment>
 	);
 }
