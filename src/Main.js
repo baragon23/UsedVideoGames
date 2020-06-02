@@ -2,7 +2,6 @@ import React, { useState, Fragment, useRef } from 'react';
 import Browse from './Browse';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
-import Typography from '@material-ui/core/Typography';
 
 const endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1';
 
@@ -10,6 +9,7 @@ const SearchContainer = () => {
 	const [query, setQuery] = useState('');
 	const [games, setGames] = useState([]);
 	const [gameSystem, setGameSystem] = useState('');
+	const [searchMade, setSearchMade] = useState(false);
 	const searchForm = useRef();
 
 	const handleChange = (event) => {
@@ -53,14 +53,13 @@ const SearchContainer = () => {
 			let response = await fetch(apiCall);
 			response = await response.json();
 			let videogames = response.findItemsAdvancedResponse[0].searchResult[0].item || [];
-			let gamesReturned = response.findItemsAdvancedResponse[0].searchResult[0]['@count'] || 0;
+			// let gamesReturned = response.findItemsAdvancedResponse[0].searchResult[0]['@count'] || 0;
 
-			if (gamesReturned > 0) {
-				let filteredGames = videogames.filter((game) => {
-					return game.country[0] === 'US';
-				});
-				setGames(filteredGames);
-			}
+			let filteredGames = videogames.filter((game) => {
+				return game.country[0] === 'US';
+			});
+			setGames(filteredGames);
+			setSearchMade(true);
 		} catch (error) {
 			console.error(error);
 		}
@@ -68,7 +67,6 @@ const SearchContainer = () => {
 
 	return (
 		<Fragment>
-			<Typography variant="h3">Search For Used Video Games on eBay</Typography>
 			<SearchBar
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
@@ -76,7 +74,8 @@ const SearchContainer = () => {
 				gameSystem={gameSystem}
 				handleSystemSelect={handleSystemSelect}
 			/>
-			{games.length > 0 ? <SearchResults games={games} /> : <Browse />}
+			<a href="#browse" name="browse"></a>
+			{searchMade ? <SearchResults games={games} /> : <Browse />}
 		</Fragment>
 	);
 };

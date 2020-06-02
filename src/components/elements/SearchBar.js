@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSearchFetch } from '../hooks/useSearchFetch';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,7 +26,8 @@ const useStyles = makeStyles({
 	},
 });
 
-const SearchBar = ({ handleChange, handleSubmit, searchForm, gameSystem, handleSystemSelect }) => {
+const SearchBar = () => {
+	const [gameSystem, games, searchForm, handleChange, handleSystemSelect, handleSubmit, getGames] = useSearchFetch();
 	const classes = useStyles();
 
 	return (
@@ -69,8 +71,8 @@ const SearchBar = ({ handleChange, handleSubmit, searchForm, gameSystem, handleS
 						<Button
 							type="submit"
 							variant="contained"
-							size="large"
-							color="primary"
+							size="medium"
+							color="secondary"
 							className={classes.button}
 						>
 							Go
