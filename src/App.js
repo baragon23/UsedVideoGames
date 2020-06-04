@@ -1,18 +1,29 @@
-import React, { Fragment } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Navigation from './components/Navigation';
-import PageLayout from './PageLayout';
+import React, { useState } from 'react';
 
-function App() {
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+import Navigation from './components/Navigation';
+import PageLayout from './components/PageLayout';
+
+const App = () => {
+	const [searchTerm, setSearchTerm] = useState([]);
+
+	const darkTheme = createMuiTheme({
+		palette: {
+			type: 'dark',
+		},
+	});
+
 	return (
-		<Fragment>
+		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
-			<Navigation />
-			<PageLayout />
+			<Navigation setSearchTerm={setSearchTerm} />
+			<PageLayout searchTerm={searchTerm} />
 			{/* Footer goes here */}
 			<div style={{ height: '1000px' }}></div>
-		</Fragment>
+		</ThemeProvider>
 	);
-}
+};
 
 export default App;

@@ -1,15 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
-import Slide from '@material-ui/core/Slide';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
 import SearchBar from './elements/SearchBar';
 
-const Navigation = () => {
+const Navigation = ({ setSearchTerm }) => {
 	return (
 		<AppBar position="relative">
 			<Toolbar variant="dense">
@@ -17,15 +16,15 @@ const Navigation = () => {
 					<Grid item md={12}>
 						<Grid container justify="space-between">
 							<Typography variant="h6" color="inherit">
-								<a href="/">Used Video Games</a>
+								<Link to="/">Used Video Games</Link>
 							</Typography>
 							<Typography variant="h6" color="inherit">
-								<a href="/#browse">Browse By System</a>
+								<Link to="/browse">Browse By System</Link>
 							</Typography>
 						</Grid>
 					</Grid>
 					<Grid item md={12}>
-						<SearchBar />
+						<SearchBar setSearchTerm={setSearchTerm} />
 					</Grid>
 				</Grid>
 			</Toolbar>

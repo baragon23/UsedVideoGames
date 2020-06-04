@@ -1,9 +1,7 @@
 import { useState, useRef } from 'react';
-import { SEARCH_BASE_URL } from '../../config';
 
-export const useSearchFetch = () => {
+export const useSearchFetch = (setSearchTerm, history) => {
 	const [query, setQuery] = useState('');
-	const [games, setGames] = useState([]);
 	const [gameSystem, setGameSystem] = useState('');
 	const searchForm = useRef();
 
@@ -19,31 +17,11 @@ export const useSearchFetch = () => {
 		searchForm.current.reportValidity();
 		event.preventDefault();
 
-		// reset results upon a new user query
-		//setGames([]);
-
 		const searchQuery = `${gameSystem} ${query}`;
-		const endpoint = `${SEARCH_BASE_URL}${searchQuery}`;
 
-		getGames(endpoint);
+		setSearchTerm(searchQuery);
+		history.push('/results');
 	};
 
-	const getGames = async (endpoint) => {
-		try {
-			let response = await fetch(endpoint);
-			response = await response.json();
-			let videogames = response.findItemsAdvancedResponse[0].searchResult[0].item || [];
-			// let gamesReturned = response.findItemsAdvancedResponse[0].searchResult[0]['@count'] || 0;
-
-			let filteredGames = videogames.filter((game) => {
-				return game.country[0] === 'US';
-			});
-			console.log(filteredGames);
-			setGames(filteredGames);
-		} catch (error) {
-			console.error(error);
-		}
-	};
-
-	return [gameSystem, games, searchForm, handleChange, handleSystemSelect, handleSubmit, getGames];
+	return [gameSystem, searchForm, handleChange, handleSystemSelect, handleSubmit];
 };

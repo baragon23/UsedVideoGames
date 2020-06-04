@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSearchFetch } from '../hooks/useSearchFetch';
+import { withRouter } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -11,14 +13,12 @@ import TextField from '@material-ui/core/TextField';
 const useStyles = makeStyles({
 	textField: {
 		width: '100%',
-		backgroundColor: 'aliceblue',
 	},
 	form: {
 		width: '100%',
 	},
 	dropdown: {
 		minWidth: 120,
-		backgroundColor: 'aliceblue',
 	},
 	button: {
 		height: '100%',
@@ -26,8 +26,11 @@ const useStyles = makeStyles({
 	},
 });
 
-const SearchBar = () => {
-	const [gameSystem, games, searchForm, handleChange, handleSystemSelect, handleSubmit, getGames] = useSearchFetch();
+const SearchBar = ({ history, setSearchTerm }) => {
+	const [gameSystem, searchForm, handleChange, handleSystemSelect, handleSubmit] = useSearchFetch(
+		setSearchTerm,
+		history
+	);
 	const classes = useStyles();
 
 	return (
@@ -84,4 +87,4 @@ const SearchBar = () => {
 	);
 };
 
-export default SearchBar;
+export default withRouter(SearchBar);
