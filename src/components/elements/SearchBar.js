@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useSearchFetch } from '../hooks/useSearchFetch';
 import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,23 +6,22 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputBase from '@material-ui/core/InputBase';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
+import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles({
-	textField: {
-		width: '100%',
-	},
 	form: {
 		width: '100%',
 	},
 	dropdown: {
-		minWidth: 120,
+		width: 120,
 	},
-	button: {
-		height: '100%',
-		width: '100%',
+	select: {
+		height: 60,
 	},
 });
 
@@ -34,22 +33,31 @@ const SearchBar = ({ history, setSearchTerm }) => {
 	const classes = useStyles();
 
 	return (
-		<div>
+		<Fragment>
 			<form className={classes.form} onSubmit={handleSubmit} ref={searchForm}>
-				<Grid container spacing={1}>
-					<Grid item sm={9}>
-						<TextField
-							id="outlined-basic"
-							onChange={handleChange}
-							className={classes.textField}
-							label="Search for video game"
-							variant="outlined"
+				<Grid container spacing={1} alignItems="center">
+					<span>
+						<InputBase
+							autoFocus={true}
+							placeholder="Search games"
 							required
-							inputRef={(input) => input && input.focus()}
+							size="medium"
+							onChange={handleChange}
+							startAdornment={
+								<InputAdornment position="start">
+									<SearchIcon />
+								</InputAdornment>
+							}
 						/>
-					</Grid>
-					<Grid item sm={2}>
-						<FormControl variant="outlined" className={classes.dropdown}>
+					</span>
+					<span>
+						<FormControl
+							color="secondary"
+							variant="outlined"
+							size="small"
+							margin="dense"
+							className={classes.dropdown}
+						>
 							<InputLabel htmlFor="system-dropdown">System</InputLabel>
 							<Select
 								native
@@ -63,27 +71,29 @@ const SearchBar = ({ history, setSearchTerm }) => {
 								}}
 							>
 								<option aria-label="None" value="" />
-								<option value="PS4">PS4</option>
-								<option value="Switch">Switch</option>
-								<option value="Xbox One">Xbox One</option>
-								<option value="Microsoft Xbox One X">Microsoft Xbox One X</option>
+								<option aria-label="PS4" value="PS4">
+									PS4
+								</option>
+								<option aria-label="Switch" value="Switch">
+									Switch
+								</option>
+								<option aria-label="Xbox One" value="Xbox One">
+									Xbox One
+								</option>
+								<option aria-label="Xbox 360" value="Xbox 360">
+									Xbox 360
+								</option>
 							</Select>
 						</FormControl>
-					</Grid>
-					<Grid item sm={1}>
-						<Button
-							type="submit"
-							variant="contained"
-							size="medium"
-							color="secondary"
-							className={classes.button}
-						>
+					</span>
+					<span>
+						<Button type="submit" variant="contained" size="medium" color="secondary">
 							Go
 						</Button>
-					</Grid>
+					</span>
 				</Grid>
 			</form>
-		</div>
+		</Fragment>
 	);
 };
 

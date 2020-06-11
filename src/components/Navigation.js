@@ -1,34 +1,59 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import Headroom from 'react-headroom';
 
 import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import HomeIcon from '@material-ui/icons/Home';
+import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 
 import SearchBar from './elements/SearchBar';
 
+const useStyles = makeStyles({
+	link: {
+		color: '#fff',
+		textDecoration: 'none',
+	},
+	container: {
+		height: '100%',
+	},
+});
+
 const Navigation = ({ setSearchTerm }) => {
+	const classes = useStyles();
+
 	return (
-		<AppBar position="relative">
-			<Toolbar variant="dense">
-				<Grid container direction="column">
-					<Grid item md={12}>
+		<Headroom>
+			<AppBar position="relative">
+				<Toolbar variant="dense">
+					<Container maxWidth="lg">
 						<Grid container justify="space-between">
-							<Typography variant="h6" color="inherit">
-								<Link to="/">Used Video Games</Link>
-							</Typography>
-							<Typography variant="h6" color="inherit">
-								<Link to="/browse">Browse By System</Link>
-							</Typography>
+							<Grid item>
+								<Grid container alignItems="center" className={classes.container}>
+									<Button size="large" startIcon={<HomeIcon />}>
+										<Link to="/" className={classes.link}>
+											Home
+										</Link>
+									</Button>
+									<Button size="large" startIcon={<HorizontalSplitIcon />}>
+										<Link to="/browse" className={classes.link}>
+											Browse By System
+										</Link>
+									</Button>
+								</Grid>
+							</Grid>
+							<Grid item>
+								<SearchBar setSearchTerm={setSearchTerm} />
+							</Grid>
 						</Grid>
-					</Grid>
-					<Grid item md={12}>
-						<SearchBar setSearchTerm={setSearchTerm} />
-					</Grid>
-				</Grid>
-			</Toolbar>
-		</AppBar>
+					</Container>
+				</Toolbar>
+			</AppBar>
+		</Headroom>
 	);
 };
 
