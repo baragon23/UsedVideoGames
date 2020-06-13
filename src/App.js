@@ -12,6 +12,12 @@ const App = () => {
 	const darkTheme = createMuiTheme({
 		palette: {
 			type: 'dark',
+			primary: {
+				main: '#009688',
+			},
+			secondary: {
+				main: '#ff1744',
+			},
 		},
 	});
 

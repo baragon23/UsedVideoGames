@@ -29,21 +29,21 @@ const Navigation = ({ setSearchTerm }) => {
 	return (
 		<Headroom>
 			<AppBar position="relative">
-				<Toolbar variant="dense">
+				<Toolbar>
 					<Container maxWidth="lg">
 						<Grid container justify="space-between">
 							<Grid item>
 								<Grid container alignItems="center" className={classes.container}>
-									<Button size="large" startIcon={<HomeIcon />}>
-										<Link to="/" className={classes.link}>
+									<Link to="/" className={classes.link}>
+										<Button size="large" startIcon={<HomeIcon />}>
 											Home
-										</Link>
-									</Button>
-									<Button size="large" startIcon={<HorizontalSplitIcon />}>
-										<Link to="/browse" className={classes.link}>
+										</Button>
+									</Link>
+									<Link to="/browse" className={classes.link}>
+										<Button size="large" startIcon={<HorizontalSplitIcon />}>
 											Browse By System
-										</Link>
-									</Button>
+										</Button>
+									</Link>
 								</Grid>
 							</Grid>
 							<Grid item>

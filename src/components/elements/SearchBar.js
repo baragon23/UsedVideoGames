@@ -9,13 +9,16 @@ import FormControl from '@material-ui/core/FormControl';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import InputBase from '@material-ui/core/InputBase';
 import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import SearchIcon from '@material-ui/icons/Search';
-import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles({
 	form: {
 		width: '100%',
+	},
+	searchBox: {
+		border: '1px solid #70c4bc',
 	},
 	dropdown: {
 		width: 120,
@@ -41,6 +44,7 @@ const SearchBar = ({ history, setSearchTerm }) => {
 							autoFocus={true}
 							placeholder="Search games"
 							required
+							className={classes.searchBox}
 							size="medium"
 							onChange={handleChange}
 							startAdornment={
@@ -51,16 +55,9 @@ const SearchBar = ({ history, setSearchTerm }) => {
 						/>
 					</span>
 					<span>
-						<FormControl
-							color="secondary"
-							variant="outlined"
-							size="small"
-							margin="dense"
-							className={classes.dropdown}
-						>
+						<FormControl color="secondary" variant="outlined" size="small" className={classes.dropdown}>
 							<InputLabel htmlFor="system-dropdown">System</InputLabel>
 							<Select
-								native
 								required
 								value={gameSystem}
 								onChange={handleSystemSelect}
@@ -70,19 +67,19 @@ const SearchBar = ({ history, setSearchTerm }) => {
 									id: 'system-dropdown',
 								}}
 							>
-								<option aria-label="None" value="" />
-								<option aria-label="PS4" value="PS4">
+								<MenuItem aria-label="None" value="" />
+								<MenuItem aria-label="PS4" value="PS4">
 									PS4
-								</option>
-								<option aria-label="Switch" value="Switch">
+								</MenuItem>
+								<MenuItem aria-label="Switch" value="Switch">
 									Switch
-								</option>
-								<option aria-label="Xbox One" value="Xbox One">
+								</MenuItem>
+								<MenuItem aria-label="Xbox One" value="Xbox One">
 									Xbox One
-								</option>
-								<option aria-label="Xbox 360" value="Xbox 360">
+								</MenuItem>
+								<MenuItem aria-label="Xbox 360" value="Xbox 360">
 									Xbox 360
-								</option>
+								</MenuItem>
 							</Select>
 						</FormControl>
 					</span>
