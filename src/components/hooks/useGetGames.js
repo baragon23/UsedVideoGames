@@ -21,18 +21,12 @@ export const useGetGames = (searchTerm) => {
 				return game.country[0] === 'US';
 			});
 
-			let newGames = USGames.filter((game) => game.condition[0].conditionDisplayName[0] === 'Brand New');
-			let likeNewGames = USGames.filter((game) => game.condition[0].conditionDisplayName[0] === 'Like New');
-			let veryGoodGames = USGames.filter((game) => game.condition[0].conditionDisplayName[0] === 'Very Good');
-			let goodGames = USGames.filter((game) => game.condition[0].conditionDisplayName[0] === 'Good');
-			let acceptableGames = USGames.filter((game) => game.condition[0].conditionDisplayName[0] === 'Acceptable');
-
 			// create array of arrays with each array corresponding to New, Like New, Very Good, etc.
-			let orderedGames = [newGames];
-			orderedGames.push(likeNewGames);
-			orderedGames.push(veryGoodGames);
-			orderedGames.push(goodGames);
-			orderedGames.push(acceptableGames);
+			let orderedGames = [filterGames(USGames, 'Brand New')];
+			orderedGames.push(filterGames(USGames, 'Like New'));
+			orderedGames.push(filterGames(USGames, 'Very Good'));
+			orderedGames.push(filterGames(USGames, 'Good'));
+			orderedGames.push(filterGames(USGames, 'Acceptable'));
 
 			console.log(orderedGames);
 			setGames(orderedGames);
@@ -42,6 +36,14 @@ export const useGetGames = (searchTerm) => {
 		} finally {
 			setLoading(false);
 		}
+	};
+
+	const filterGames = (games, condition) => {
+		let myGames = [...games].filter((game) => game.condition[0].conditionDisplayName[0] === condition) || [];
+		myGames.sort((game1, game2) => {
+			return game1.sellingStatus[0].currentPrice[0].__value__ - game2.sellingStatus[0].currentPrice[0].__value__;
+		});
+		return myGames;
 	};
 
 	return [{ games, setGames, loading, setLoading, error, setError }, getGames];

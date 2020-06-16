@@ -44,6 +44,7 @@ const SearchBar = ({ history, setSearchTerm }) => {
 							autoFocus={true}
 							placeholder="Search games"
 							required
+							autoComplete="true"
 							className={classes.searchBox}
 							size="medium"
 							onChange={handleChange}
