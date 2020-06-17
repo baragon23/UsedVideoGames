@@ -14,4 +14,6 @@ const SEARCH_BASE_URL = `${API_URL}?
 	&itemFilter(0).value(1)=StoreInventory
 	&keywords=`;
 
-export { SEARCH_BASE_URL };
+const CONDITIONS = ['Brand New', 'Like New', 'Very Good', 'Good', 'Acceptable'];
+
+export { SEARCH_BASE_URL, CONDITIONS };

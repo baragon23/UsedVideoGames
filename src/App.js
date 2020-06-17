@@ -13,10 +13,10 @@ const App = () => {
 		palette: {
 			type: 'dark',
 			primary: {
-				main: '#009688',
+				main: '#009688' /* teal */,
 			},
 			secondary: {
-				main: '#ff1744',
+				main: '#ff1744' /* bright red */,
 			},
 		},
 	});
