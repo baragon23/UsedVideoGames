@@ -30,6 +30,7 @@ const Results = ({ searchTerm }) => {
 			setLoading(false);
 			setError('');
 		};
+		// eslint-disable-next-line
 	}, [searchTerm]);
 
 	if (error) return <h2>Error loading games from eBay. Please try again later.</h2>;
