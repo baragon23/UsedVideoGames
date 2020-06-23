@@ -7,7 +7,7 @@ export const useGetGames = (searchTerm) => {
 	const [error, setError] = useState(false);
 
 	const getGames = async () => {
-		const endpoint = `${SEARCH_BASE_URL}${searchTerm}`;
+		const endpoint = `/search/searchTerm=${searchTerm}`;
 		setLoading(true);
 		setError(false);
 
@@ -15,7 +15,6 @@ export const useGetGames = (searchTerm) => {
 			let response = await fetch(endpoint);
 			response = await response.json();
 			let videogames = response.findItemsAdvancedResponse[0].searchResult[0].item || [];
-			// let gamesReturned = response.findItemsAdvancedResponse[0].searchResult[0]['@count'] || 0;
 
 			let USGames = videogames.filter((game) => {
 				return game.country[0] === 'US';
