@@ -6,7 +6,7 @@ export const useGetGames = (searchTerm) => {
 	const [error, setError] = useState(false);
 
 	const getGames = async () => {
-		const endpoint = `/search/searchTerm=${searchTerm}`;
+		const endpoint = `/search/?searchTerm=${searchTerm}`;
 		setLoading(true);
 		setError(false);
 
