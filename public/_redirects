@@ -1,1 +1,1 @@
-/search/* searchTerm=:searchTerm https://svcs.ebay.com/services/search/FindingService/v1?keywords=:searchTerm  200!
+/search/* searchTerm=:searchTerm https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SECURITY-APPNAME=Benjamin-VideoGam-PRD-83882c164-4d873162&GLOBAL-ID=EBAY-US&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&SERVICE-VERSION=1.13.0&outputSelector(0)=SellerInfo&outputSelector(1)=ListingInfo&categoryId=139973&itemFilter(0).name=ListingType&itemFilter(0).value(0)=FixedPrice&itemFilter(0).value(1)=StoreInventory&keywords=:searchTerm  200
