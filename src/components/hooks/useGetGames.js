@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { SEARCH_BASE_URL } from '../../config';
 
 export const useGetGames = (searchTerm) => {
 	const [games, setGames] = useState([]);
