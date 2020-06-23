@@ -11,4 +11,4 @@
 	&itemFilter(0).name=ListingType
 	&itemFilter(0).value(0)=FixedPrice
 	&itemFilter(0).value(1)=StoreInventory
-	&keywords=:searchTerm 200
+	&keywords=:searchTerm  200
