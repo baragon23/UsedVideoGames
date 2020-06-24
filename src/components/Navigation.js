@@ -46,7 +46,7 @@ const Navigation = ({ setSearchTerm }) => {
 									</Link>
 								</Grid>
 							</Grid>
-							<Grid item>
+							<Grid item style={{ display: 'flex', alignItems: 'center' }}>
 								<SearchBar setSearchTerm={setSearchTerm} />
 							</Grid>
 						</Grid>

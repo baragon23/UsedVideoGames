@@ -27,7 +27,6 @@ const App = () => {
 			<Navigation setSearchTerm={setSearchTerm} />
 			<PageLayout searchTerm={searchTerm} />
 			{/* Footer goes here */}
-			<div style={{ height: '1000px' }}></div>
 		</ThemeProvider>
 	);
 };

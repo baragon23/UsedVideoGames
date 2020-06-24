@@ -7,24 +7,15 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import InputBase from '@material-ui/core/InputBase';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles({
-	form: {
-		width: '100%',
-	},
-	searchBox: {
-		border: '1px solid #70c4bc',
-	},
 	dropdown: {
 		width: 120,
-	},
-	select: {
-		height: 60,
 	},
 });
 
@@ -40,19 +31,22 @@ const SearchBar = ({ history, setSearchTerm }) => {
 			<form className={classes.form} onSubmit={handleSubmit} ref={searchForm}>
 				<Grid container spacing={1} alignItems="center">
 					<span>
-						<InputBase
+						<TextField
 							autoFocus={true}
-							placeholder="Search games"
+							variant="outlined"
+							label="Search games"
 							required
+							color="secondary"
 							autoComplete="true"
-							className={classes.searchBox}
-							size="medium"
+							size="small"
 							onChange={handleChange}
-							startAdornment={
-								<InputAdornment position="start">
-									<SearchIcon />
-								</InputAdornment>
-							}
+							InputProps={{
+								startAdornment: (
+									<InputAdornment position="start">
+										<SearchIcon />
+									</InputAdornment>
+								),
+							}}
 						/>
 					</span>
 					<span>
