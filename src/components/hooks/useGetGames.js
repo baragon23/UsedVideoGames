@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { SEARCH_BASE_URL } from '../../config';
 
 export const useGetGames = (searchTerm) => {
 	const [games, setGames] = useState([]);
@@ -6,7 +7,10 @@ export const useGetGames = (searchTerm) => {
 	const [error, setError] = useState(false);
 
 	const getGames = async () => {
-		const endpoint = `/search/?searchTerm=${searchTerm}`;
+		const devEndPoint = `${SEARCH_BASE_URL}${searchTerm}`;
+		const prodEndPoint = `/search/?searchTerm=${searchTerm}`;
+		const endpoint = process.env.NODE_ENV === 'development' ? devEndPoint : prodEndPoint;
+		console.log(endpoint);
 		setLoading(true);
 		setError(false);
 
