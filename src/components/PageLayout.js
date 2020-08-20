@@ -1,18 +1,16 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Container from '@material-ui/core/Container';
-
 import Browse from './Pages/Browse';
 import Home from './Pages/Home';
 import Results from './Pages/Results';
 
-const PageLayout = ({ searchTerm }) => {
+const PageLayout = ({ searchTerm, setSearchTerm }) => {
 	return (
-		<Container maxWidth="md">
+		<div>
 			<Switch>
 				<Route exact path="/">
-					<Home />
+					<Home setSearchTerm={setSearchTerm} />
 				</Route>
 				<Route path="/results">
 					<Results searchTerm={searchTerm} />
@@ -21,7 +19,7 @@ const PageLayout = ({ searchTerm }) => {
 					<Browse />
 				</Route>
 			</Switch>
-		</Container>
+		</div>
 	);
 };
 

@@ -15,7 +15,7 @@ import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles({
 	dropdown: {
-		width: 120,
+		width: 160,
 	},
 });
 

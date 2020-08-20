@@ -10,7 +10,7 @@ export const useGetGames = (searchTerm) => {
 		const devEndPoint = `${SEARCH_BASE_URL}${searchTerm}`;
 		const prodEndPoint = `/search/?searchTerm=${searchTerm}`;
 		const endpoint = process.env.NODE_ENV === 'development' ? devEndPoint : prodEndPoint;
-		console.log(endpoint);
+		//console.log(endpoint);
 		setLoading(true);
 		setError(false);
 

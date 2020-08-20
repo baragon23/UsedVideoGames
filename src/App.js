@@ -25,7 +25,7 @@ const App = () => {
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
 			<Navigation setSearchTerm={setSearchTerm} />
-			<PageLayout searchTerm={searchTerm} />
+			<PageLayout searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 			{/* Footer goes here */}
 		</ThemeProvider>
 	);

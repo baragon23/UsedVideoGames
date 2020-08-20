@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { CONDITIONS } from '../../config';
 
+import Container from '@material-ui/core/Container';
 import InfoIcon from '@material-ui/icons/Info';
 import ListingTable from '../elements/ListingTable';
 import Spinner from '../elements/Spinner';
@@ -37,7 +38,7 @@ const Results = ({ searchTerm }) => {
 	if (loading) return <Spinner />;
 
 	return (
-		<div>
+		<Container maxWidth="md">
 			<Typography variant="h3">Results for: {searchTerm}</Typography>
 			{games.map((gameGroup, index) => {
 				return (
@@ -54,7 +55,7 @@ const Results = ({ searchTerm }) => {
 					</div>
 				);
 			})}
-		</div>
+		</Container>
 	);
 };
 
