@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import PageLayout from './components/PageLayout';
 
