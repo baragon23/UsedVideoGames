@@ -40,10 +40,10 @@ const Intro = ({ setSearchTerm }) => {
 			<Divider />
 			<Typography variant="body1" className={classes.subText}>
 				Our search tool is the easiest and fastest way to find video games on Ebay's website. You no longer have
-				to wade through endless filters and hard-to-read results.
+				to wade through endless filters and hard-to-read results because we take care of all of that for you.
 			</Typography>
 			<div className={classes.searchBar}>
-				<SearchBar setSearchTerm={setSearchTerm} />
+				<SearchBar setSearchTerm={setSearchTerm} isHomePage={true} />
 			</div>
 			<div className={classes.boxes}>
 				<div>

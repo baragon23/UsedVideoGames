@@ -17,9 +17,12 @@ const useStyles = makeStyles({
 	dropdown: {
 		width: 160,
 	},
+	searchBox: {
+		width: '45em',
+	},
 });
 
-const SearchBar = ({ history, setSearchTerm }) => {
+const SearchBar = ({ history, setSearchTerm, isHomePage }) => {
 	const [gameSystem, searchForm, handleChange, handleSystemSelect, handleSubmit] = useSearchFetch(
 		setSearchTerm,
 		history
@@ -28,11 +31,12 @@ const SearchBar = ({ history, setSearchTerm }) => {
 
 	return (
 		<Fragment>
-			<form className={classes.form} onSubmit={handleSubmit} ref={searchForm}>
-				<Grid container spacing={1} alignItems="center">
+			<form onSubmit={handleSubmit} ref={searchForm}>
+				<Grid container spacing={1} alignItems="center" justify="center">
 					<span>
 						<TextField
 							autoFocus={true}
+							className={isHomePage ? classes.searchBox : ''}
 							variant="outlined"
 							label="Search games"
 							required
@@ -63,17 +67,62 @@ const SearchBar = ({ history, setSearchTerm }) => {
 								}}
 							>
 								<MenuItem aria-label="None" value="" />
+								<MenuItem aria-label="Dreamcast" value="Dreamcast">
+									Dreamcast
+								</MenuItem>
+								<MenuItem aria-label="Gamecube" value="Gamecube">
+									Gamecube
+								</MenuItem>
+								<MenuItem aria-label="Genesis" value="Genesis">
+									Genesis
+								</MenuItem>
+								<MenuItem aria-label="Megadrive" value="Megadrive">
+									Megadrive
+								</MenuItem>
+								<MenuItem aria-label="Nintendo DS" value="Nintendo DS">
+									Nintendo DS
+								</MenuItem>
+								<MenuItem aria-label="N64" value="N64">
+									N64
+								</MenuItem>
+								<MenuItem aria-label="PS1" value="PS1">
+									PS1
+								</MenuItem>
+								<MenuItem aria-label="PS2" value="PS2">
+									PS2
+								</MenuItem>
+								<MenuItem aria-label="PS3" value="PS3">
+									PS3
+								</MenuItem>
 								<MenuItem aria-label="PS4" value="PS4">
 									PS4
+								</MenuItem>
+								<MenuItem aria-label="PSP" value="PSP">
+									PSP
+								</MenuItem>
+								<MenuItem aria-label="Saturn" value="Saturn">
+									Saturn
+								</MenuItem>
+								<MenuItem aria-label="SNES" value="SNES">
+									SNES
+								</MenuItem>
+								<MenuItem aria-label="Super Famicom" value="Super Famicom">
+									Super Famicom
 								</MenuItem>
 								<MenuItem aria-label="Switch" value="Switch">
 									Switch
 								</MenuItem>
-								<MenuItem aria-label="Xbox One" value="Xbox One">
-									Xbox One
+								<MenuItem aria-label="Wii" value="Wii">
+									Wii
+								</MenuItem>
+								<MenuItem aria-label="WiiU" value="WiiU">
+									WiiU
 								</MenuItem>
 								<MenuItem aria-label="Xbox 360" value="Xbox 360">
 									Xbox 360
+								</MenuItem>
+								<MenuItem aria-label="Xbox One" value="Xbox One">
+									Xbox One
 								</MenuItem>
 							</Select>
 						</FormControl>

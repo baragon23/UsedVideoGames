@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import PageLayout from './components/PageLayout';
 
@@ -13,10 +14,10 @@ const App = () => {
 		palette: {
 			type: 'dark',
 			primary: {
-				main: '#009688' /* teal */,
+				main: '#00838f' /* teal */,
 			},
 			secondary: {
-				main: '#ff1744' /* bright red */,
+				main: '#80deea' /* light green */,
 			},
 		},
 	});
@@ -26,7 +27,6 @@ const App = () => {
 			<CssBaseline />
 			<Navigation setSearchTerm={setSearchTerm} />
 			<PageLayout searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-			{/* Footer goes here */}
 		</ThemeProvider>
 	);
 };

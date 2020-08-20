@@ -9,7 +9,7 @@ import Intro from '../elements/Intro';
 
 const useStyles = makeStyles({
 	topBG: {
-		backgroundColor: '#009688',
+		backgroundColor: '#00838f',
 		paddingTop: '3em',
 		height: '35vh',
 	},
@@ -45,7 +45,7 @@ const Home = ({ setSearchTerm }) => {
 						<Typography variant="h3">Used Video Games</Typography>
 					</div>
 					<Typography variant="h6" className={classes.subTitle}>
-						EASIEST WAY TO SEARCH EBAY'S WEBSITE FOR USED VIDEO GAMES
+						EASIEST WAY TO SEARCH EBAY FOR USED VIDEO GAMES
 					</Typography>
 					<Intro setSearchTerm={setSearchTerm} />
 				</Container>

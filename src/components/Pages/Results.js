@@ -18,6 +18,9 @@ const useStyles = makeStyles({
 	infoIcon: {
 		marginRight: '0.5em',
 	},
+	title: {
+		margin: '1em 0',
+	},
 });
 
 const Results = ({ searchTerm }) => {
@@ -39,7 +42,9 @@ const Results = ({ searchTerm }) => {
 
 	return (
 		<Container maxWidth="md">
-			<Typography variant="h3">Results for: {searchTerm}</Typography>
+			<Typography variant="h4" className={classes.title}>
+				Results for: {searchTerm}
+			</Typography>
 			{games.map((gameGroup, index) => {
 				return (
 					<div key={index}>
