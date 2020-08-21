@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import red from '@material-ui/core/colors/red';
+import cyan from '@material-ui/core/colors/cyan';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-const rowHighlight = red['A200']; // #ff8a80
+const rowHighlight = cyan['600']; // #ff8a80
 
 const StyledTableCell = withStyles((theme) => ({
 	head: {

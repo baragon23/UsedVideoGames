@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Container from '@material-ui/core/Container';
@@ -37,20 +37,18 @@ const Home = ({ setSearchTerm }) => {
 	const classes = useStyles();
 
 	return (
-		<Fragment>
-			<div className={classes.topBG}>
-				<Container maxWidth="md">
-					<div className={classes.title}>
-						<GamePad />
-						<Typography variant="h3">Used Video Games</Typography>
-					</div>
-					<Typography variant="h6" className={classes.subTitle}>
-						EASIEST WAY TO SEARCH EBAY FOR USED VIDEO GAMES
-					</Typography>
-					<Intro setSearchTerm={setSearchTerm} />
-				</Container>
-			</div>
-		</Fragment>
+		<div className={classes.topBG}>
+			<Container maxWidth="md">
+				<div className={classes.title}>
+					<GamePad />
+					<Typography variant="h3">Used Video Games</Typography>
+				</div>
+				<Typography variant="h6" className={classes.subTitle}>
+					EASIEST WAY TO SEARCH EBAY FOR USED VIDEO GAMES
+				</Typography>
+				<Intro setSearchTerm={setSearchTerm} />
+			</Container>
+		</div>
 	);
 };
 
