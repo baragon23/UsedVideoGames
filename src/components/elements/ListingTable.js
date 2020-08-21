@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import cyan from '@material-ui/core/colors/cyan';
+import CurrencyFormat from 'react-currency-format';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -40,6 +41,31 @@ const useStyles = makeStyles({
 
 const ListingTable = ({ games }) => {
 	const classes = useStyles();
+	const [videogames, setVideoGames] = useState([]);
+
+	useEffect(() => {
+		let tempArr = [];
+		if (games) {
+			games.forEach((game, i) => {
+				let obj = {};
+				let shipping = 0;
+				// shipping info is not always provided
+				if (game.shippingInfo) {
+					if (game.shippingInfo[0].shippingServiceCost) {
+						shipping = game.shippingInfo[0].shippingServiceCost[0].__value__;
+					}
+				}
+				obj.id = game.itemId[0];
+				obj.url = game.viewItemURL[0];
+				obj.price = parseFloat(game.sellingStatus[0].currentPrice[0].__value__) + parseFloat(shipping);
+				obj.feedback = `(${game.sellerInfo[0].feedbackScore[0]}) ${game.sellerInfo[0].positiveFeedbackPercent[0]}%`;
+				obj.title = game.title[0];
+				obj.location = game.location[0];
+				tempArr[i] = obj;
+			});
+		}
+		setVideoGames(tempArr);
+	}, [games]);
 
 	const handleRowClick = (link) => {
 		window.open(link, '_blank');
@@ -58,16 +84,25 @@ const ListingTable = ({ games }) => {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{games.map((game) => (
+						{videogames.map((game) => (
 							<TableRow
-								key={game.itemId[0]}
+								key={game.id}
 								className={classes.tableRow}
-								onClick={() => handleRowClick(game.viewItemURL[0])}
+								onClick={() => handleRowClick(game.url)}
 							>
-								<TableCell>{`$${game.sellingStatus[0].currentPrice[0].__value__}`}</TableCell>
-								<TableCell>{`(${game.sellerInfo[0].feedbackScore[0]}) ${game.sellerInfo[0].positiveFeedbackPercent[0]}%`}</TableCell>
-								<TableCell>{game.title[0]}</TableCell>
-								<TableCell>{game.location[0]}</TableCell>
+								<TableCell>
+									<CurrencyFormat
+										value={game.price}
+										displayType={'text'}
+										thousandSeparator={true}
+										prefix={'$'}
+										decimalScale={2}
+										fixedDecimalScale={true}
+									/>
+								</TableCell>
+								<TableCell>{game.feedback}</TableCell>
+								<TableCell>{game.title}</TableCell>
+								<TableCell>{game.location}</TableCell>
 							</TableRow>
 						))}
 					</TableBody>
