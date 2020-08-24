@@ -15,11 +15,19 @@ import SearchBar from './elements/SearchBar';
 
 const useStyles = makeStyles({
 	link: {
-		color: '#fff',
 		textDecoration: 'none',
 	},
-	container: {
-		height: '100%',
+	itemContainer: {
+		// eslint-disable-next-line
+		['@media (max-width: 768px)']: {
+			paddingBottom: '1em',
+		},
+	},
+	linkContainer: {
+		// eslint-disable-next-line
+		['@media (max-width: 768px)']: {
+			paddingBottom: '1em',
+		},
 	},
 });
 
@@ -31,9 +39,9 @@ const Navigation = ({ setSearchTerm }) => {
 			<AppBar position="relative">
 				<Toolbar>
 					<Container maxWidth="lg">
-						<Grid container justify="space-between">
-							<Grid item>
-								<Grid container alignItems="center" className={classes.container}>
+						<Grid container justify="space-between" className={classes.itemContainer}>
+							<Grid item className={classes.linkContainer}>
+								<Grid container alignItems="center">
 									<Link to="/" className={classes.link}>
 										<Button size="large" startIcon={<HomeIcon />}>
 											Home

@@ -7,19 +7,17 @@ import Results from './Pages/Results';
 
 const PageLayout = ({ searchTerm, setSearchTerm }) => {
 	return (
-		<div>
-			<Switch>
-				<Route exact path="/">
-					<Home setSearchTerm={setSearchTerm} />
-				</Route>
-				<Route path="/results">
-					<Results searchTerm={searchTerm} />
-				</Route>
-				<Route path="/browse">
-					<Browse />
-				</Route>
-			</Switch>
-		</div>
+		<Switch>
+			<Route exact path="/">
+				<Home setSearchTerm={setSearchTerm} />
+			</Route>
+			<Route path="/results">
+				<Results searchTerm={searchTerm} />
+			</Route>
+			<Route path="/browse">
+				<Browse />
+			</Route>
+		</Switch>
 	);
 };
 
