@@ -32,6 +32,7 @@ const useStyles = makeStyles({
 		maxHeight: 440,
 	},
 	tableRow: {
+		backgroundColor: '#616161',
 		'&:hover': {
 			cursor: 'pointer',
 			backgroundColor: rowHighlight,

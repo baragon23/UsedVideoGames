@@ -12,7 +12,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
-import { findByLabelText } from '@testing-library/react';
 
 const useStyles = makeStyles({
 	dropdown: {

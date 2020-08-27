@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
 		height: '100%',
 		padding: '2em',
 	},
-	heading: {},
 	subText: {
 		marginTop: '1em',
 	},
@@ -34,9 +33,7 @@ const Intro = ({ setSearchTerm }) => {
 
 	return (
 		<Paper elevation={3} className={classes.intro}>
-			<Typography variant="h5" className={classes.heading}>
-				Video Game Search Bar
-			</Typography>
+			<Typography variant="h5">Video Game Search Bar</Typography>
 			<Divider />
 			<Typography variant="body1" className={classes.subText}>
 				Our search tool is the easiest and fastest way to find video games on Ebay's website. You no longer have

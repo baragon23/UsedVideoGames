@@ -4,22 +4,30 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { CONDITIONS } from '../../config';
 
-import Container from '@material-ui/core/Container';
+import Divider from '@material-ui/core/Divider';
 import InfoIcon from '@material-ui/icons/Info';
-import ListingTable from '../elements/ListingTable';
-import Spinner from '../elements/Spinner';
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+import ListingTable from '../elements/ListingTable';
+import Spinner from '../elements/Spinner';
+
 const useStyles = makeStyles({
+	divider: {
+		marginBottom: '1.5em',
+	},
+	intro: {
+		margin: '0 0 2em 0',
+		width: '100%',
+		height: '100%',
+		padding: '2em',
+	},
 	noGames: {
 		display: 'flex',
 		alignItems: 'center',
 	},
 	infoIcon: {
 		marginRight: '0.5em',
-	},
-	title: {
-		margin: '1em 0',
 	},
 });
 
@@ -41,10 +49,9 @@ const Results = ({ searchTerm }) => {
 	if (loading) return <Spinner />;
 
 	return (
-		<Container maxWidth="md">
-			<Typography variant="h4" className={classes.title}>
-				Results for: {searchTerm}
-			</Typography>
+		<Paper elevation={3} className={classes.intro}>
+			<Typography variant="h5">Results for: {searchTerm}</Typography>
+			<Divider className={classes.divider} />
 			{games.map((gameGroup, index) => {
 				return (
 					<div key={index}>
@@ -60,7 +67,7 @@ const Results = ({ searchTerm }) => {
 					</div>
 				);
 			})}
-		</Container>
+		</Paper>
 	);
 };
 
