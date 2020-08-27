@@ -73,7 +73,6 @@ const PageLayout = ({ searchTerm, setSearchTerm }) => {
 						</Paper>
 					</Route>
 				</Switch>
-				{/*<Intro setSearchTerm={setSearchTerm} />*/}
 			</Container>
 		</div>
 	);
