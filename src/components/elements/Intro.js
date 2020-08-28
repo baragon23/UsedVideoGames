@@ -23,8 +23,13 @@ const useStyles = makeStyles((theme) => ({
 	boxes: {
 		display: 'grid',
 		gridColumnGap: '1.25em',
+		gridRowGap: '1.25em',
 		gridTemplateColumns: '1fr 1fr 1fr 1fr',
 		marginTop: '2em',
+		// eslint-disable-next-line
+		['@media (max-width: 480px)']: {
+			gridTemplateColumns: '1fr 1fr',
+		},
 	},
 }));
 
