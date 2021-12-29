@@ -30,7 +30,6 @@ export const useGetGames = (searchTerm) => {
 			orderedGames.push(filterGames(USGames, 'Good'));
 			orderedGames.push(filterGames(USGames, 'Acceptable'));
 
-			console.log(orderedGames);
 			setGames(orderedGames);
 		} catch (error) {
 			setError(true);
@@ -42,9 +41,22 @@ export const useGetGames = (searchTerm) => {
 
 	const filterGames = (games, condition) => {
 		let myGames = [...games].filter((game) => game.condition[0].conditionDisplayName[0] === condition) || [];
-		myGames.sort((game1, game2) => {
-			return game1.sellingStatus[0].currentPrice[0].__value__ - game2.sellingStatus[0].currentPrice[0].__value__;
+		
+		// add the shipping cost to the game price
+		myGames.forEach((game, index) => {
+			let gamePrice = game.sellingStatus[0].convertedCurrentPrice[0].__value__;
+
+			// not every game has this property: shippingServiceCost
+			if (game.shippingInfo[0].hasOwnProperty('shippingServiceCost')) {
+				let shippingCost = game.shippingInfo[0].shippingServiceCost[0].__value__;
+				game.sellingStatus[0].convertedCurrentPrice[0].__value__ = parseFloat(gamePrice) + parseFloat(shippingCost);	
+			}
 		});
+
+		myGames.sort((game1, game2) => {
+			return game1.sellingStatus[0].convertedCurrentPrice[0].__value__ - game2.sellingStatus[0].convertedCurrentPrice[0].__value__;
+		});
+		
 		return myGames;
 	};
 

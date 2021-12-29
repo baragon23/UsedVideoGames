@@ -67,6 +67,10 @@ const Results = ({ searchTerm }) => {
 					</div>
 				);
 			})}
+			<Typography variant="body2">
+				<a id="shipping">Sometimes eBay does not provide shipping cost for specific items for some odd 
+				reason and therefore won't be included in the displayed price.</a>
+			</Typography>
 		</Paper>
 	);
 };

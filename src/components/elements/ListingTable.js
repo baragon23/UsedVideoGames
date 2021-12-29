@@ -23,6 +23,10 @@ const StyledTableCell = withStyles((theme) => ({
 }))(TableCell);
 
 const useStyles = makeStyles({
+	shipping: {
+		color: '#80deea',
+		textDecoration: 'none',
+	},
 	table: {
 		minWidth: 650,
 	},
@@ -78,7 +82,7 @@ const ListingTable = ({ games }) => {
 				<Table className={classes.table} aria-label="simple table">
 					<TableHead>
 						<TableRow>
-							<StyledTableCell>Price (includes shipping)</StyledTableCell>
+							<StyledTableCell>Price (includes shipping <a className={classes.shipping} href="#shipping">*</a> )</StyledTableCell>
 							<StyledTableCell>Seller Feedback</StyledTableCell>
 							<StyledTableCell>Description</StyledTableCell>
 							<StyledTableCell>Ships From</StyledTableCell>
