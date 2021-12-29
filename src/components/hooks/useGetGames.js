@@ -30,7 +30,7 @@ export const useGetGames = (searchTerm) => {
 			orderedGames.push(filterGames(USGames, 'Good'));
 			orderedGames.push(filterGames(USGames, 'Acceptable'));
 
-			//console.log(orderedGames);
+			console.log(orderedGames);
 			setGames(orderedGames);
 		} catch (error) {
 			setError(true);
