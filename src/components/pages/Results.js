@@ -3,7 +3,7 @@ import { useGetGames } from '../hooks/useGetGames';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { CONDITIONS } from '../../config';
-
+import { Link } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import InfoIcon from '@material-ui/icons/Info';
 import Paper from '@material-ui/core/Paper';
@@ -28,6 +28,9 @@ const useStyles = makeStyles({
 	},
 	infoIcon: {
 		marginRight: '0.5em',
+	},
+	shippingNote: {
+		color: 'white',
 	},
 });
 
@@ -68,8 +71,8 @@ const Results = ({ searchTerm }) => {
 				);
 			})}
 			<Typography variant="body2">
-				<a id="shipping">Sometimes eBay does not provide shipping cost for specific items for some odd 
-				reason and therefore won't be included in the displayed price.</a>
+				<Link id="shipping" className={classes.shippingNote}>Sometimes eBay does not provide shipping cost for specific items for some odd 
+				reason and therefore won't be included in the displayed price.</Link>
 			</Typography>
 		</Paper>
 	);
