@@ -79,7 +79,7 @@ const ListingTable = ({ games }) => {
 	return (
 		<Fragment>
 			<TableContainer component={Paper} className={classes.tableSpacing}>
-				<Table className={classes.table} aria-label="simple table">
+				<Table className={classes.table} size="small" aria-label="simple table">
 					<TableHead>
 						<TableRow>
 							<StyledTableCell>Price (includes shipping <a className={classes.shipping} href="#shipping">*</a> )</StyledTableCell>

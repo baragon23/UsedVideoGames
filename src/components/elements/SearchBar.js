@@ -81,6 +81,9 @@ const SearchBar = ({ history, setSearchTerm }) => {
 							<MenuItem aria-label="Megadrive" value="Megadrive">
 								Megadrive
 							</MenuItem>
+							<MenuItem aria-label="NES" value="NES">
+								NES
+							</MenuItem>
 							<MenuItem aria-label="Nintendo DS" value="Nintendo DS">
 								Nintendo DS
 							</MenuItem>
@@ -98,6 +101,9 @@ const SearchBar = ({ history, setSearchTerm }) => {
 							</MenuItem>
 							<MenuItem aria-label="PS4" value="PS4">
 								PS4
+							</MenuItem>
+							<MenuItem aria-label="PS5" value="PS5">
+								PS5
 							</MenuItem>
 							<MenuItem aria-label="PSP" value="PSP">
 								PSP
@@ -125,6 +131,9 @@ const SearchBar = ({ history, setSearchTerm }) => {
 							</MenuItem>
 							<MenuItem aria-label="Xbox One" value="Xbox One">
 								Xbox One
+							</MenuItem>
+							<MenuItem aria-label="XXbox Series X" value="Xbox Series X">
+								Xbox Series X
 							</MenuItem>
 						</Select>
 					</FormControl>
