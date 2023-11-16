@@ -3,6 +3,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
+	container: {
+		padding: '6em 0',
+	},
 	spinner: {
 		border: '10px solid #f3f3f3' /* Light grey */,
 		borderTop: '10px solid #009688' /* Blue */,
@@ -24,6 +27,12 @@ const useStyles = makeStyles({
 	},
 });
 
-const Spinner = () => <div className={useStyles().spinner}></div>;
+const Spinner = () => {
+	return (
+		<div className={useStyles().container}>
+			<div className={useStyles().spinner} />
+		</div>
+	);
+};
 
 export default Spinner;

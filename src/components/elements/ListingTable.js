@@ -1,8 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import cyan from '@material-ui/core/colors/cyan';
 import CurrencyFormat from 'react-currency-format';
-
+import { Tooltip } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,8 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
-const rowHighlight = cyan['600']; // #ff8a80
+import { colorCyan } from '../../styles/colors';
 
 const StyledTableCell = withStyles((theme) => ({
 	head: {
@@ -39,7 +37,7 @@ const useStyles = makeStyles({
 		backgroundColor: '#616161',
 		'&:hover': {
 			cursor: 'pointer',
-			backgroundColor: rowHighlight,
+			backgroundColor: colorCyan,
 		},
 	},
 });
@@ -82,7 +80,19 @@ const ListingTable = ({ games }) => {
 				<Table className={classes.table} size="small" aria-label="simple table">
 					<TableHead>
 						<TableRow>
-							<StyledTableCell>Price (includes shipping <a className={classes.shipping} href="#shipping">*</a> )</StyledTableCell>
+							<StyledTableCell>
+								Price (includes shipping{' '}
+								<Tooltip
+									className={classes.shipping}
+									placement="top-end"
+									title="Sometimes 
+									eBay does not provide shipping cost for specific items for some odd 
+									reason and therefore won't be included in the displayed price."
+								>
+									<span>*</span>
+								</Tooltip>{' '}
+								)
+							</StyledTableCell>
 							<StyledTableCell>Seller Feedback</StyledTableCell>
 							<StyledTableCell>Description</StyledTableCell>
 							<StyledTableCell>Ships From</StyledTableCell>

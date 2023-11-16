@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Browse from './pages/Browse';
 import Home from './pages/Home';
 import Results from './pages/Results';
+import Games from './pages/Games';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -44,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PageLayout = ({ searchTerm, setSearchTerm }) => {
+	const [id, setId] = useState(0);
+	const [name, setName] = useState('none');
 	const classes = useStyles();
 
 	return (
@@ -52,7 +55,7 @@ const PageLayout = ({ searchTerm, setSearchTerm }) => {
 				<Container maxWidth="md">
 					<div className={classes.title}>
 						<GamePad />
-						<Typography variant="h3">Used Video Games</Typography>
+						<Typography variant="h3">Used Video Games on EBAY</Typography>
 					</div>
 					<Typography variant="h6" className={classes.subTitle}>
 						EASIEST WAY TO SEARCH EBAY FOR USED VIDEO GAMES
@@ -60,7 +63,7 @@ const PageLayout = ({ searchTerm, setSearchTerm }) => {
 				</Container>
 				<Switch>
 					<Route exact path="/">
-						<Home setSearchTerm={setSearchTerm} />
+						<Home setSearchTerm={setSearchTerm} setId={setId} setName={setName} />
 					</Route>
 					<Route path="/results">
 						<Paper elevation={3} className={classes.intro}>
@@ -69,7 +72,12 @@ const PageLayout = ({ searchTerm, setSearchTerm }) => {
 					</Route>
 					<Route path="/browse">
 						<Paper elevation={3} className={classes.paper}>
-							<Browse />
+							<Browse setId={setId} setName={setName} />
+						</Paper>
+					</Route>
+					<Route path="/games">
+						<Paper elevation={3} className={classes.paper}>
+							<Games id={id} name={name} setSearchTerm={setSearchTerm} />
 						</Paper>
 					</Route>
 				</Switch>

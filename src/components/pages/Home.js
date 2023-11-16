@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 	},
 });
 
-const Home = ({ setSearchTerm }) => {
+const Home = ({ setSearchTerm, setId, setName }) => {
 	const classes = useStyles();
 
 	return (
@@ -37,7 +37,7 @@ const Home = ({ setSearchTerm }) => {
 					or
 				</Typography>
 			</Container>
-			<Browse />
+			<Browse setId={setId} setName={setName} />
 		</Container>
 	);
 };
