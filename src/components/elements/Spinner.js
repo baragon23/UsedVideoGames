@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 		width: '8em',
 		height: '8em',
 		animation: 'spin 0.8s linear infinite',
-		margin: '2em auto',
+		margin: '3em auto',
 	},
 	'@global': {
 		'@keyframes spin': {
